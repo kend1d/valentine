@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine ❤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="watermelon-sugar.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- MAIN SCREEN -->
+  <div class="container" id="mainCard">
+    <img src="images/main-photo.jpg" alt="Molly" class="kitty">
+
+    <h1>Will you be my Valentine, Molly?</h1>
+
+    <div class="buttons">
+      <button class="yes" id="yesBtn">Yes</button>
+      <button class="no" id="noBtn">No 😡</button>
+    </div>
+  </div>
+
+  <!-- YAY SCREEN -->
+  <div class="container yay-screen" id="yayCard">
+    <h1>YAY YAY!!! ❤️🥳</h1>
+    <img src="images/main.jpg" alt="Us" class="yay-img">
+  </div>
+
+  <script>
+    const music = document.getElementById("bgMusic");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const mainCard = document.getElementById("mainCard");
+    const yayCard = document.getElementById("yayCard");
+
+    // YES = real user gesture → start music (Brave allows this)
+    yesBtn.addEventListener("click", () => {
+      music.volume = 0.9;
+      music.play().catch(() => {});
+      
+      // switch screens, DO NOT reload page
+      mainCard.style.display = "none";
+      yayCard.style.display = "block";
+    });
+
+    // NO button dodge (100–150px)
+    noBtn.addEventListener("mouseover", () => {
+      const move = Math.floor(Math.random() * 51) + 100;
+      const rect = noBtn.getBoundingClientRect();
+
+      let x = rect.left + (Math.random() > 0.5 ? move : -move);
+      let y = rect.top + (Math.random() > 0.5 ? move : -move);
+
+      x = Math.max(20, Math.min(window.innerWidth - rect.width - 20, x));
+      y = Math.max(20, Math.min(window.innerHeight - rect.height - 20, y));
+
+      noBtn.style.position = "absolute";
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
+
+    setInterval(createHeart, 350);
+  </script>
+
+</body>
+</html>

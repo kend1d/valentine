@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #ffe6f0;
+  font-family: "Comic Sans MS", cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container {
+  background: white;
+  padding: 35px 45px;
+  border-radius: 28px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  z-index: 2;
+  max-width: 90vw;
+}
+
+.kitty {
+  width: 220px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+button {
+  padding: 14px 34px;
+  font-size: 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.yes {
+  background-color: #ff66a3;
+  color: white;
+  font-size: 22px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.yes:hover {
+  transform: scale(1.25);
+  box-shadow: 0 0 20px rgba(255, 102, 163, 0.6);
+}
+
+.no {
+  background-color: #d9d9d9;
+  color: #444;
+}
+
+/* ✅ YAY SCREEN — FIXED SIZE */
+.yay-screen {
+  display: none;
+}
+
+.yay-screen h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+/* ✅ Image now visible */
+.yay-big {
+  width: 300px;          /* smaller than before */
+  max-width: 80vw;
+  border-radius: 25px;
+  margin-top: 10px;
+}
+
+/* Floating Hearts */
+.heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 36px;
+  animation: floatUp linear forwards;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}¥
